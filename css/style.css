@@ -158,6 +158,11 @@ b, strong { font-weight: 650; }
 .map-wrap { min-height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
 .map { width: 100%; height: 100%; min-height: 0; display: flex; justify-content: center; }
 .map svg { height: 100%; width: auto; max-width: 100%; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow); }
+@media (min-width: 981px) {
+  /* Keep the map's box the same shape as the map, whatever the window shape */
+  .map { container-type: size; align-items: center; }
+  .map svg { width: min(100cqw, calc(100cqh * 576 / 832)); height: auto; }
+}
 .map-hint { position: absolute; bottom: 6px; margin: 0; font-size: 0.72rem; color: var(--muted); background: rgba(8,19,29,0.7); padding: 2px 10px; border-radius: 999px; }
 
 /* ---------- meters ---------- */
