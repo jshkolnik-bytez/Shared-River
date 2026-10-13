@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shared River</title>
+  <meta name="description" content="A turn-based strategy game about the Grand Ethiopian Renaissance Dam: lead Ethiopia, Sudan or Egypt through twenty years on the Blue Nile.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1a26'/%3E%3Cpath d='M14 50 C24 40 22 30 32 24 C42 18 44 12 50 10' stroke='%234cc3ff' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- Title -->
+    <section id="screen-title" class="screen active" aria-labelledby="title-heading">
+      <svg class="title-waves" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path class="wave w1" d="M-50 420 C 150 360 300 470 500 410 S 850 330 1250 400"/>
+        <path class="wave w2" d="M-50 460 C 200 410 350 520 600 450 S 950 380 1250 450"/>
+        <path class="wave w3" d="M-50 500 C 250 460 400 560 650 500 S 1000 430 1250 500"/>
+      </svg>
+      <div class="title-inner">
+        <p class="eyebrow">A game about the Grand Ethiopian Renaissance Dam</p>
+        <h1 id="title-heading" class="title-logo">Shared <span>River</span></h1>
+        <p class="title-lede">Lead Ethiopia, Sudan or Egypt through twenty years on the Blue Nile. Store water, share data, sign rules — and find out whether one river can work for three countries.</p>
+        <div class="title-actions">
+          <button class="btn primary big" data-action="play">Play</button>
+          <button class="btn ghost big" data-action="continue" hidden>Continue</button>
+        </div>
+        <div class="title-links">
+          <button class="link" data-action="how">How to play</button>
+          <span aria-hidden="true">·</span>
+          <button class="link" data-action="sources">Sources &amp; credits</button>
+        </div>
+        <dl class="title-facts">
+          <div><dt>74</dt><dd>billion m³ reservoir</dd></div>
+          <div><dt>5,150</dt><dd>megawatts</dd></div>
+          <div><dt>3</dt><dd>countries</dd></div>
+          <div><dt>20</dt><dd>years</dd></div>
+        </dl>
+      </div>
+      <p class="title-foot">A school project · real history, simplified numbers</p>
+    </section>
+
+    <!-- Choose your country -->
+    <section id="screen-choose" class="screen" aria-labelledby="choose-heading">
+      <div class="choose-inner">
+        <button class="link back" data-action="title">← Back</button>
+        <h2 id="choose-heading" class="h-display">Choose your country</h2>
+        <p class="muted center">Each side has a real, reasonable goal. In a drought, those goals clash.</p>
+        <div id="country-cards" class="country-cards"></div>
+      </div>
+    </section>
+
+    <!-- Main game -->
+    <section id="screen-game" class="screen" aria-label="Game">
+      <header class="topbar">
+        <div class="brand">Shared <span>River</span></div>
+        <div class="topbar-mid">
+          <span id="tb-level" class="chip"></span>
+          <span id="tb-year" class="tb-year"></span>
+          <div id="tb-progress" class="progress" aria-hidden="true"></div>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-btn" data-action="dam" title="About the dam" aria-label="About the dam">ⓘ</button>
+          <button class="icon-btn" data-action="sound" title="Sound on/off" aria-label="Sound on/off" id="btn-sound">🔊</button>
+          <button class="icon-btn" data-action="menu" title="Menu" aria-label="Menu">☰</button>
+        </div>
+      </header>
+      <main class="game-grid">
+        <aside id="panel-meters" class="panel meters" aria-label="Meters"></aside>
+        <div class="map-wrap">
+          <div id="map" class="map"></div>
+          <p class="map-hint">Click the GERD for facts · river width = water flowing</p>
+        </div>
+        <aside id="panel-decide" class="panel decide" aria-label="This year's choices"></aside>
+      </main>
+    </section>
+
+    <!-- Ending -->
+    <section id="screen-ending" class="screen" aria-label="Ending"></section>
+  </div>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" tabindex="-1"></div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
